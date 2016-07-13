@@ -3,6 +3,22 @@ require File.expand_path(File.dirname(__FILE__) + '/../triangle')
 
 describe Triangle do
 
+  describe '入力時の異常ステータス' do
+
+    context 'nilが含まれる場合' do
+      specify { expect(Triangle.pattern(nil, 1, 1)).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern(1, nil, 1)).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern(1, 1, nil)).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern(nil, nil, nil)).to eq '正しい値を入力してください。' }
+    end
+    context '文字が含まれる場合' do
+      specify { expect(Triangle.pattern('1', 1, 1)).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern(1, '1', 1)).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern(1, 1, '1')).to eq '正しい値を入力してください。' }
+      specify { expect(Triangle.pattern('1', '2', '3')).to eq '正しい値を入力してください。' }
+    end
+  end
+
   describe '正常ステータス' do
 
     context '正三角形の場合' do
