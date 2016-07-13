@@ -10,5 +10,5 @@ class Triangle
   end
 end
 
-puts Triangle.pattern(ARGV[0], ARGV[1], ARGV[2])
+puts Triangle.pattern(ARGV[0].to_i, ARGV[1].to_i, ARGV[2].to_i)
 
